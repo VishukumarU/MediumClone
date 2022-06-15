@@ -2,18 +2,14 @@
     <div class="container page">
         <div class="row">
             <div class="col-md-6 offset-md-3 col-xs-12">
-                <h1 class="text-xs-center">Sign Up</h1>
+                <h1 class="text-xs-center">Sign In</h1>
                 <p class="text-xs-center">
-                    <a [routerLink]="['/login']">Have an account?</a>
+                    <a [routerLink]="['/register']">Need an account?</a>
                 </p>
                 <app-backend-error-messages *ngIf="(backendErrors$|async )as backendErrors"
                     [backendErrors]="backendErrors"></app-backend-error-messages>
                 <form class="form" [formGroup]="form">
                     <fieldset>
-                        <fieldset class="form-group">
-                            <input type="text" formControlName="username" class="form-control form-control-lg"
-                                placeholder="User Name">
-                        </fieldset>
                         <fieldset class="form-group">
                             <input type="email" formControlName="email" class="form-control form-control-lg"
                                 placeholder="Email">
@@ -23,8 +19,8 @@
                                 placeholder="Password">
                         </fieldset>
                         <button [disabled]="!form.valid || (isSubmitting$ | async)"
-                            class="btn btn-lg btn-primary pull-xs-right" type="submit" (click)="onSave()">Sign
-                            Up</button>
+                            class="btn btn-lg btn-primary pull-xs-right" type="submit" (click)="onLogin()">Sign
+                            In</button>
                     </fieldset>
                 </form>
             </div>

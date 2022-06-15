@@ -16,13 +16,18 @@ export class AuthService {
         // this.url = 'https://conduit.productionready.io/api';
     }
 
-    register (data: MediumClone.IRegisterRequest): Observable<MediumClone.ICurrentUser> {
-
+    register (data: MediumClone.IRegisterUser): Observable<MediumClone.ICurrentUser> {
         const url = `${environment.apiURL}/users`;
-
-        return this.httpClient.post<MediumClone.IAUthResponse>(url, data).pipe(
+        return this.httpClient.post<MediumClone.IAuthResponse>(url, data).pipe(
             map(({ user }) => user)
         );
+    }
+
+    login (data: MediumClone.ILoginRequest): Observable<MediumClone.ICurrentUser> {
+        const url = `${environment.apiURL}/users/login`;
+        return this.httpClient.post<MediumClone.IAuthResponse>(url, data).pipe(
+            map(({ user }) => user)
+        )
     }
 
 }

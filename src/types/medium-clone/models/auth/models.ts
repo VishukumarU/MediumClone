@@ -15,10 +15,28 @@ export interface IRegisterRequest {
     email: string;
 }
 
-export interface IAuthState {
-    isSubmitting: boolean;
+export interface IRegisterUser {
+    user: IRegisterRequest;
 }
 
-export interface IAUthResponse {
+export interface IAuthState {
+    isSubmitting: boolean;
+    currenntUser: ICurrentUser | null;
+    isLoggedIn: boolean | null;
+    validationErrors: IBackEndErrors | null;
+}
+
+export interface IAuthResponse {
     user: ICurrentUser
+}
+
+export interface IBackEndErrors {
+    [key: string]: string[];
+}
+
+export interface ILoginRequest {
+    user: {
+        email: string;
+        password: string
+    }
 }

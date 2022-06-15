@@ -7,10 +7,12 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EffectsModule } from '@ngrx/effects';
+import { TopbarComponent } from './_containers/topbar/topbar.component';
 
 @NgModule({
     declarations: [
-        AppComponent,
+        AppComponent
     ],
     imports: [
         BrowserModule,
@@ -20,8 +22,10 @@ import { AppComponent } from './app.component';
         StoreDevtoolsModule.instrument({
             maxAge: 25,
             logOnly: environment.production,
-            name: 'Vishu_Learn_NGRX'
-        })
+            name: 'Vishu_Learn_NGRX',
+            autoPause: false,
+        }),
+        EffectsModule.forRoot([])
     ],
     providers: [],
     bootstrap: [AppComponent]

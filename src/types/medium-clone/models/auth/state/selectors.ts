@@ -1,9 +1,15 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { createSelector } from "@ngrx/store";
 
-export const authSelector = createFeatureSelector<App.IAppState>('auth');
-
+export const authFeatureSelector = (
+    state: App.IAppState
+): MediumClone.IAuthState => state.auth;
 
 export const isSubmittingSelector = createSelector(
-    authSelector,
-    (state) => state.auth.isSubmitting
-)
+    authFeatureSelector,
+    (authState): boolean => authState.isSubmitting
+);
+
+export const validationErrorsSelector = createSelector(
+    authFeatureSelector,
+    (authState): MediumClone.IBackEndErrors | null => authState.validationErrors
+);

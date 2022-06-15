@@ -1,1 +1,4 @@
-<app-register></app-register>
+<ng-container [ngSwitch]="state.mode">
+    <app-register *ngSwitchCase="region.Register"></app-register>
+    <app-login *ngSwitchCase="region.Login"></app-login>
+</ng-container>

@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { isSubmittingSelector } from 'src/types/medium-clone/models/auth/state/selectors';
 
-import { registerAction } from '../../../../types/medium-clone/models/auth/state/actions/actions';
-import { AuthService } from '../../../../services/auth.service';
+import { registerAction } from 'src/types/medium-clone/models/auth';
+import {
+    isSubmittingSelector,
+    validationErrorsSelector
+} from 'src/types/medium-clone/models/auth/state/selectors';
 
 @Component({
     selector: 'app-register',
@@ -16,12 +18,13 @@ export class RegisterComponent implements OnInit {
 
     form: FormGroup;
     isSubmitting$: Observable<boolean>;
+    backendErrors$: Observable<MediumClone.IBackEndErrors | null>;
 
     constructor(
         private fb: FormBuilder,
-        private service: AuthService,
-        private store: Store) {
-        this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
+        private store: Store<App.IAppState>) {
+        this.isSubmitting$ = this.store.pipe(select((isSubmittingSelector)));
+        this.backendErrors$ = this.store.pipe(select(validationErrorsSelector))
     }
 
     ngOnInit (): void {
@@ -29,8 +32,6 @@ export class RegisterComponent implements OnInit {
     }
 
     initializeForm () {
-        console.log('init');
-
         this.form = this.fb.group({
             username: ['', [Validators.required]],
             email: ['', [Validators.required, Validators.email]],
@@ -39,7 +40,11 @@ export class RegisterComponent implements OnInit {
     }
 
     onSave () {
-        this.store.dispatch(registerAction(this.form.value))
+        // const { email, password, username } = this.form.value;
+        const request: MediumClone.IRegisterUser = {
+            user: this.form.value
+        };
+        this.store.dispatch(registerAction({ request }))
     }
 
 }

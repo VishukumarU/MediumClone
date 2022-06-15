@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterComponent } from '../components/auth/register/register.component';
+import { Region } from 'src/types/medium-clone/enums';
 import { AuthComponent } from '../_containers/auth/auth.component';
 
 const routes: Routes = [
@@ -11,7 +11,17 @@ const routes: Routes = [
     },
     {
         path: 'register',
-        component: AuthComponent
+        component: AuthComponent,
+        data: {
+            region: Region.Register
+        }
+    },
+    {
+        path: 'login',
+        component: AuthComponent,
+        data: {
+            region: Region.Login
+        }
     }
 ];
 
