@@ -9,46 +9,45 @@ import * as MediumClone from "src/types/medium-clone/medium-clone";
 import { loginFailureAction, loginSuccessAction } from "../actions/login.action";
 
 @Injectable({
-	providedIn: 'root'
+    providedIn: 'root'
 })
 
 export class LoginEffect {
 
-	login$ = createEffect(
-		() => this.actions$.pipe(
-			ofType(MediumClone.loginAction),
-			switchMap(({ request }) => this.authService.login(request)
-				.pipe(
-					map(currentUser => {
-						this.persistenceService.set('accessToken', currentUser.token);
-						return loginSuccessAction({ currentUser });
-					}),
-					catchError((errorResponse: HttpErrorResponse) =>
-						of(loginFailureAction({ errors: errorResponse.error.errors })))
-				))
-		)
-	);
+    login$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(MediumClone.loginAction),
+            switchMap(({ request }) => this.authService.login(request)
+                .pipe(
+                    map(currentUser => {
+                        this.persistenceService.set('accessToken', currentUser.token);
+                        return loginSuccessAction({ currentUser });
+                    }),
+                    catchError((errorResponse: HttpErrorResponse) =>
+                        of(loginFailureAction({ errors: errorResponse.error.errors })))
+                ))
+        )
+    );
 
-	redirectAfterLogin$ = createEffect(
-		() => this.actions$.pipe(
-			ofType(MediumClone.loginSuccessAction),
-			tap(() => {
-				// TODO:- Navigate to home page here
-				this.router.navigateByUrl('/')
-			})
-		),
-		{ dispatch: false }
-	);
-
+    redirectAfterLogin$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(MediumClone.loginSuccessAction),
+            tap(() => {
+                this.router.navigateByUrl('/home')
+            })
+        ),
+        { dispatch: false }
+    );
 
 
-	constructor(
-		private actions$: Actions,
-		private authService: AuthService,
-		private persistenceService: PersistenceService,
-		private router: Router
-	) {
 
-	}
+    constructor(
+        private actions$: Actions,
+        private authService: AuthService,
+        private persistenceService: PersistenceService,
+        private router: Router
+    ) {
+
+    }
 
 }

@@ -1,14 +1,15 @@
-import { state } from "@angular/animations";
 import { Action, createReducer, on } from "@ngrx/store"
 import { registerAction } from "src/types/medium-clone/core";
 import { loginAction, loginFailureAction, loginSuccessAction } from "./actions/login.action";
 import { registerFailureAction, registerSuccessAction } from "./actions/register.action";
+import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction } from "./actions/get-current-user.action";
 
 const initialState: MediumClone.IAuthState = {
     isSubmitting: false,
-    currenntUser: null,
+    currentUser: null,
     isLoggedIn: null,
-    validationErrors: null
+    validationErrors: null,
+    isLoading: false
 }
 
 const authReducer = createReducer(initialState,
@@ -20,7 +21,7 @@ const authReducer = createReducer(initialState,
     on(registerSuccessAction, (state, action): MediumClone.IAuthState => ({
         ...state,
         isSubmitting: false,
-        currenntUser: action.currentUser,
+        currentUser: action.currentUser,
         isLoggedIn: true,
         validationErrors: null
     })),
@@ -37,7 +38,7 @@ const authReducer = createReducer(initialState,
     on(loginSuccessAction, (state, action): MediumClone.IAuthState => ({
         ...state,
         isSubmitting: false,
-        currenntUser: action.currentUser,
+        currentUser: action.currentUser,
         isLoggedIn: true,
         validationErrors: null
     })),
@@ -45,6 +46,22 @@ const authReducer = createReducer(initialState,
         ...state,
         isSubmitting: false,
         validationErrors: action.errors
+    })),
+    on(getCurrentUserAction, (state): MediumClone.IAuthState => ({
+        ...state,
+        isLoading: true
+    })),
+    on(getCurrentUserSuccessAction, (state, action): MediumClone.IAuthState => ({
+        ...state,
+        currentUser: action.currentUser,
+        isLoading: false,
+        isLoggedIn: true
+    })),
+    on(getCurrentUserFailureAction, (state): MediumClone.IAuthState => ({
+        ...state,
+        isLoading: false,
+        isLoggedIn: false,
+        currentUser: null
     }))
 );
 

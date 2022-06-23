@@ -30,4 +30,11 @@ export class AuthService {
         )
     }
 
+    getCurrentUser (): Observable<MediumClone.ICurrentUser> {
+        const url = `${environment.apiURL}/user`;
+        return this.httpClient.get<MediumClone.IAuthResponse>(url).pipe(
+            map(({ user }) => user)
+        )
+    }
+
 }

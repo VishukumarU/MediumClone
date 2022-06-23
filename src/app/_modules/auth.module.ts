@@ -12,6 +12,7 @@ import { RegisterEffect } from 'src/types/medium-clone/models/auth/state/effects
 import { SharedModule } from '../shared/shared/shared.module';
 import { LoginComponent } from '../components/auth/login/login.component';
 import { LoginEffect } from 'src/types/medium-clone/models/auth/state/effects/login.effect';
+import { GetCurrentUserEffect } from 'src/types/medium-clone/models/auth/state/effects/get-current-user.effect';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { LoginEffect } from 'src/types/medium-clone/models/auth/state/effects/lo
         ReactiveFormsModule,
         SharedModule,
         StoreModule.forFeature('auth', authReducers),
-        EffectsModule.forFeature([RegisterEffect, LoginEffect])
+        EffectsModule.forFeature([RegisterEffect, LoginEffect, GetCurrentUserEffect])
     ]
 })
 export class AuthModule { }

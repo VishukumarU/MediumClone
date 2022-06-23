@@ -6,7 +6,7 @@ import { AuthComponent } from '../_containers/auth/auth.component';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'register',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
     {

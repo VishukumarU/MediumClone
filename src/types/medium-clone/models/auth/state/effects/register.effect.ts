@@ -29,8 +29,7 @@ export class RegisterEffect {
         () => this.actions$.pipe(
             ofType(MediumClone.registerSuccessAction),
             tap(() => {
-                // TODO:- Navigate to home page here
-                this.router.navigateByUrl('/');
+                this.router.navigateByUrl('/home');
             })
         ),
         { dispatch: false }

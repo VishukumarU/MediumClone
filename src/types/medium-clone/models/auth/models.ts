@@ -21,9 +21,10 @@ export interface IRegisterUser {
 
 export interface IAuthState {
     isSubmitting: boolean;
-    currenntUser: ICurrentUser | null;
+    currentUser: ICurrentUser | null;
     isLoggedIn: boolean | null;
     validationErrors: IBackEndErrors | null;
+    isLoading: boolean;
 }
 
 export interface IAuthResponse {

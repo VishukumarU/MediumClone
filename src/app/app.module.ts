@@ -8,11 +8,13 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EffectsModule } from '@ngrx/effects';
-import { TopbarComponent } from './_containers/topbar/topbar.component';
+import { TopbarModule } from './_modules/topbar.module';
+import { HomeComponent } from './_containers/home/home.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
@@ -25,7 +27,8 @@ import { TopbarComponent } from './_containers/topbar/topbar.component';
             name: 'Vishu_Learn_NGRX',
             autoPause: false,
         }),
-        EffectsModule.forRoot([])
+        EffectsModule.forRoot([]),
+        TopbarModule
     ],
     providers: [],
     bootstrap: [AppComponent]
