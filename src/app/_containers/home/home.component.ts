@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getCurrentUserAction } from 'src/types/medium-clone/core';
+import { getCurrentUserAction } from 'src/types/medium-clone/medium-clone';
 
 @Component({
     selector: 'app-home',

@@ -31,7 +31,8 @@ export class GetCurrentUserEffect {
                     })
                 )
             })
-        )
+        ),
+        // { dispatch: false }
     );
 
 

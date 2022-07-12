@@ -4,7 +4,8 @@
 
 export const environment = {
     production: false,
-    apiURL: 'https://conduit.productionready.io/api'
+    apiURL: 'https://conduit.productionready.io/api',
+    limit: 10
 };
 
 /*
