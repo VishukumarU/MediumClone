@@ -1,0 +1,10 @@
+<app-loader *ngIf="isLoading$|async"></app-loader>
+<app-error-message *ngIf="(error$ | async) as errMsg" [errMsg]="errMsg"></app-error-message>
+<div class="sidebar" *ngIf="(popularTags$|async) as tags">
+    <div>Popular Tags</div>
+    <div class="tag-list">
+        <a *ngFor="let tag of tags" [routerLink]="['/tags', tag]" class="tag-default tag-pill">
+            {{tag}}
+        </a>
+    </div>
+</div>

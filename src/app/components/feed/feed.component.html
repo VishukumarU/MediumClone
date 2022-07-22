@@ -22,9 +22,12 @@
             <h1 class="">{{article.title}}</h1>
             <p>{{article.description}}</p>
             <span>Read more...</span>
-            HERE LIST OF TAGS
+            <app-tag [tags]="article.tagList"></app-tag>
         </a>
     </div>
-    <app-pagination [limit]="limit" [totalRecords]="feed.articlesCount" [currrentPage]="currentPage" [url]="baseUrl">
-    </app-pagination>
+    <ng-container *ngIf="(feed$ | async) as feeds">
+        <app-pagination [limit]="limit" [totalRecords]="feeds.articlesCount" [currrentPage]="currentPage"
+            [url]="baseUrl">
+        </app-pagination>
+    </ng-container>
 </div>

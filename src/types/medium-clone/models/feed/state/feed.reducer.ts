@@ -1,3 +1,4 @@
+import { routerNavigationAction } from "@ngrx/router-store";
 import { Action, createReducer, on } from "@ngrx/store";
 import { getFeedAction, getFeedFailureAction, getFeedSuccessAction } from "./actions/get-feed.action";
 
@@ -17,10 +18,11 @@ const feedReducer = createReducer(initialState,
         isLoading: false,
         data: action.feed
     })),
-    on(getFeedFailureAction, (state, action): MediumClone.IFeedState => ({
+    on(getFeedFailureAction, (state): MediumClone.IFeedState => ({
         ...state,
         isLoading: false
-    }))
+    })),
+    on(routerNavigationAction, (): MediumClone.IFeedState => initialState)
 );
 
 // export function feedReducers (state: MediumClone.IFeedState, action: Action) {

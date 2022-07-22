@@ -8,10 +8,7 @@ import { feedReducers } from 'src/types/medium-clone/models/feed/state/feed.redu
 import { GlobalFeedComponent } from '../_containers/global-feed/global-feed.component';
 import { FeedComponent } from '../components/feed/feed.component';
 import { RouterModule } from '@angular/router';
-import { BannerModule } from './banner.module';
-import { ErrorMessageModule } from './error-message.module';
-import { LoaderModule } from './loader.module';
-import { PaginationModule } from './pagination.module';
+import { SharedModule } from '../shared/shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -21,12 +18,9 @@ import { PaginationModule } from './pagination.module';
     imports: [
         CommonModule,
         RouterModule,
-        BannerModule,
-        ErrorMessageModule,
-        LoaderModule,
-        PaginationModule,
+        SharedModule,
         EffectsModule.forFeature([GetFeedEffect]),
-        StoreModule.forFeature('feed', feedReducers)
+        StoreModule.forFeature('feed', feedReducers),
     ],
     exports: [
         GlobalFeedComponent
