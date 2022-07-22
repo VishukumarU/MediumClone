@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-global-feed',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GlobalFeedComponent implements OnInit {
 
-    apiUrl = '/articles';
+    apiUrl = '';
 
-    constructor() { }
+    @Input() set mode (value: string) {
+        if (value === 'feed') {
+            this.apiUrl = '/articles';
+        } else {
+            this.apiUrl = '/articles/feed';
+        }
+    }
+
+    constructor () { }
 
     ngOnInit (): void {
     }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { getCurrentUserAction } from 'src/types/medium-clone/medium-clone';
 
@@ -9,7 +10,19 @@ import { getCurrentUserAction } from 'src/types/medium-clone/medium-clone';
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private store: Store) { }
+    state: {
+        mode: 'feed' | 'your-feed'
+    } = {
+            mode: 'feed'
+        };
+
+    constructor (private store: Store,
+        private route: ActivatedRoute) {
+
+        console.log(this.route.snapshot);
+
+        this.state['mode'] = this.route.snapshot.data['mode'];
+    }
 
     ngOnInit (): void {
         this.store.dispatch(getCurrentUserAction());

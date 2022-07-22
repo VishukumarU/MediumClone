@@ -29,7 +29,7 @@ export class FeedComponent implements OnInit, OnDestroy {
     @Input() apiUrl = '';
 
 
-    constructor(
+    constructor (
         private store: Store<App.IAppState>,
         private router: Router,
         private route: ActivatedRoute

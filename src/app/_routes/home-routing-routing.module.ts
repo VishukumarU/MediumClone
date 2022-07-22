@@ -5,7 +5,18 @@ import { HomeComponent } from '../_containers/home/home.component';
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent
+        pathMatch: 'full',
+        component: HomeComponent,
+        data: {
+            mode: 'feed'
+        }
+    },
+    {
+        path: 'feed',
+        component: HomeComponent,
+        data: {
+            mode: 'your-feed'
+        }
     }
 ];
 
