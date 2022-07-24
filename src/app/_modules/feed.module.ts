@@ -9,13 +9,11 @@ import { GlobalFeedComponent } from '../_containers/global-feed/global-feed.comp
 import { FeedComponent } from '../components/feed/feed.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared/shared.module';
-import { YourFeedComponent } from '../components/your-feed/your-feed.component';
 
 @NgModule({
     declarations: [
         GlobalFeedComponent,
         FeedComponent,
-        YourFeedComponent
     ],
     imports: [
         CommonModule,

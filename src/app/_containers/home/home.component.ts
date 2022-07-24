@@ -10,18 +10,16 @@ import { getCurrentUserAction } from 'src/types/medium-clone/medium-clone';
 })
 export class HomeComponent implements OnInit {
 
-    state: {
-        mode: 'feed' | 'your-feed'
-    } = {
-            mode: 'feed'
-        };
+    state = {
+        mode: 'feed'
+    };
 
     constructor (private store: Store,
         private route: ActivatedRoute) {
 
         console.log(this.route.snapshot);
 
-        this.state['mode'] = this.route.snapshot.data['mode'];
+        this.state.mode = this.route.snapshot.data['mode'];
     }
 
     ngOnInit (): void {
