@@ -13,6 +13,7 @@ import { TopbarModule } from './_modules/topbar.module';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { AuthModule } from './_modules/auth.module';
 import { HomeModule } from './_modules/home.module';
+import { ArticleModule } from './_modules/article.module';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { HomeModule } from './_modules/home.module';
         EffectsModule.forRoot([]),
         AuthModule,
         HomeModule,
-        TopbarModule
+        TopbarModule,
+        ArticleModule
     ],
     providers: [
         {

@@ -9,10 +9,10 @@ import { getCurrentUserAction } from 'src/types/medium-clone/core';
 })
 export class AppComponent implements OnInit {
 
-    constructor(private store: Store) { }
+    constructor (private store: Store) { }
 
     ngOnInit (): void {
-        // this.store.dispatch(getCurrentUserAction());
+        this.store.dispatch(getCurrentUserAction());
     }
 
 

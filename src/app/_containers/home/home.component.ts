@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit (): void {
-        this.store.dispatch(getCurrentUserAction());
+        // this.store.dispatch(getCurrentUserAction());
     }
 
 }
