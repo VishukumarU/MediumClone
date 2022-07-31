@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { count } from 'console';
 
 @Component({
     selector: 'app-article',
