@@ -17,4 +17,9 @@ export const errorSelector = createSelector(
 export const articleSelector = createSelector(
     articleFeatureSelector,
     (state: MediumClone.IArticleState): (MediumClone.IArticle | null) => state.data
-)
+);
+
+export const backEndErrorsSelector = createSelector(
+    articleFeatureSelector,
+    (state: MediumClone.IArticleState): MediumClone.IBackEndErrors | null => state.validationErrors
+);

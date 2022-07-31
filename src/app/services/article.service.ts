@@ -27,4 +27,17 @@ export class ArticleService {
 
         return this.http.delete<{}>(url);
     }
+
+    insert (article: MediumClone.IArticleInput): Observable<MediumClone.IArticle> {
+        return this.http.post<MediumClone.IArticleResponse>(this.baseURL, { article }).pipe(
+            map(({ article }) => article)
+        )
+    }
+
+    update (article: MediumClone.IArticle): Observable<MediumClone.IArticle> {
+        return this.http.put<MediumClone.IArticleResponse>(`${this.baseURL}/${article.slug}`, { article })
+            .pipe(
+                map(({ article }) => article)
+            )
+    }
 }

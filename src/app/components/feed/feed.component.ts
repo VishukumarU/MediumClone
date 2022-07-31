@@ -59,7 +59,7 @@ export class FeedComponent implements OnInit, OnDestroy {
         // page 2 -- offset 2
         // page 3 -- offset 4
 
-        const offset = (this.currentPage * (this.limit + 2)) - (this.limit);
+        const offset = (this.currentPage * (this.limit)) - (this.limit);
         const parsedUrl = parseUrl(this.apiUrl);
         const stringifiedParams = stringify({
             offset,

@@ -1,39 +1,9 @@
-<div class="article-page">
-    <div class="banner">
-        <div *ngIf="article$|async as article" class="container">
-            <h1>{{article.title}}</h1>
-            <div class="article-meta">
-                <a [routerLink]="['/profiles', article.author.username]">
-                    <img [src]="article.author.image" />
-                </a>
-                <div class="info">
-                    <a [routerLink]="['/profiles', article.author.username]">
-                        {{article.author.username}}
-                    </a>
-                    <span class="date">{{article.createdAt}}</span>
-                </div>
-                <span *ngIf="isAuthor$ | async">
-                    <a [routerLink]="['/article', article.slug, 'edit']" class="btn btn-outline-secondary btn-sm">
-                        <i class="ion-edit"></i>EDIT ARTICLE
-                    </a>
-                    <a (click)="onDeleteArticle(article.slug)" class="btn btn-outline-danger btn-sm">
-                        <i class="ion-delete"></i>DELETE ARTICLE
-                    </a>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="container page">
-        <app-loader *ngIf="isLoading$ | async"></app-loader>
-        <app-error-message *ngIf="error$ | async"></app-error-message>
+<span [ngSwitch]="state.mode">
+    <ng-container *ngSwitchCase="'display'">
+        <app-article-display></app-article-display>
+    </ng-container>
 
-        <div class="row article-content" *ngIf="article$|async as article">
-            <div class="col-xs-12">
-                <div>
-                    <p>{{article.body}}</p>
-                </div>
-                <app-tag [tags]="article.tagList"></app-tag>
-            </div>
-        </div>
-    </div>
-</div>
+    <ng-container *ngSwitchDefault>
+        <app-article-create-edit [mode]="state.mode"></app-article-create-edit>
+    </ng-container>
+</span>

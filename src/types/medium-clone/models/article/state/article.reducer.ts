@@ -1,12 +1,15 @@
 import { routerNavigationAction } from "@ngrx/router-store";
 import { Action, createReducer, on } from "@ngrx/store"
 import { deleteArticleAction, deleteArticleFailureAction, deleteArticleSuccessAction } from "./actions/delete-article.action";
-import { getArticleAction, getArticleFailureAction, getArticleSuccessAction } from "./actions/get-article.action";
+import { getArticleAction, getArticleEditAction, getArticleEditSuccessAction, getArticleFailureAction, getArticleSuccessAction } from "./actions/get-article.action";
+import { insertArticleAction, insertArticleFailureAction, insertArticleSuccessAction } from "./actions/insert-article.action";
+import { updateArticleAction, updateArticleFailureAction, updateArticleSuccessAction } from "./actions/update-article.action";
 
 const initialState: MediumClone.IArticleState = {
     data: null,
     isLoading: false,
-    error: null
+    error: null,
+    validationErrors: null
 }
 
 const reducer = createReducer(initialState,
@@ -30,6 +33,46 @@ const reducer = createReducer(initialState,
     on(deleteArticleSuccessAction, (state): MediumClone.IArticleState => ({
         ...state,
         data: null
+    })),
+    // on(insertArticleAction, (state): MediumClone.IArticleState => ({
+    //     ...state,
+    //     isLoading: true
+    // })),
+    on(insertArticleSuccessAction, (state, action): MediumClone.IArticleState => ({
+        ...state,
+        isLoading: false,
+        data: action.article,
+        validationErrors: null
+    })),
+    on(insertArticleFailureAction, (state, action): MediumClone.IArticleState => ({
+        ...state,
+        isLoading: false,
+        validationErrors: action.errors
+    })),
+    on(getArticleEditAction, (state): MediumClone.IArticleState => ({
+        ...state,
+        isLoading: true
+    })),
+    on(getArticleEditSuccessAction, (state, action): MediumClone.IArticleState => ({
+        ...state,
+        data: action.article,
+        isLoading: false
+    })),
+    on(updateArticleAction, (state, action): MediumClone.IArticleState => ({
+        ...state,
+        isLoading: true
+    })),
+    on(updateArticleSuccessAction, (state, action): MediumClone.IArticleState => ({
+        ...state,
+        isLoading: false,
+        data: action.article,
+        validationErrors: null
+    })),
+    on(updateArticleFailureAction, (state, action): MediumClone.IArticleState => ({
+        ...state,
+        isLoading: false,
+        data: null,
+        validationErrors: action.errors
     }))
 );
 

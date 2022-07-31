@@ -23,16 +23,12 @@ export interface IAuthState {
     isSubmitting: boolean;
     currentUser: ICurrentUser | null;
     isLoggedIn: boolean | null;
-    validationErrors: IBackEndErrors | null;
+    validationErrors: MediumClone.IBackEndErrors | null;
     isLoading: boolean;
 }
 
 export interface IAuthResponse {
     user: ICurrentUser
-}
-
-export interface IBackEndErrors {
-    [key: string]: string[];
 }
 
 export interface ILoginRequest {

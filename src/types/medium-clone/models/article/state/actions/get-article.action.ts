@@ -14,3 +14,13 @@ export const getArticleSuccessAction = createAction(
 export const getArticleFailureAction = createAction(
     ActionTypes.GET_ARTICLE_FAILURE
 )
+
+export const getArticleEditAction = createAction(
+    ActionTypes.GET_ARTICLE_EDIT,
+    props<{ slug: string }>()
+)
+
+export const getArticleEditSuccessAction = createAction(
+    ActionTypes.GET_ARTICLE_EDIT_SUCCESS,
+    props<{ article: MediumClone.IArticle }>()
+)
