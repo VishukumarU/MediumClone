@@ -14,6 +14,7 @@ import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { AuthModule } from './_modules/auth.module';
 import { HomeModule } from './_modules/home.module';
 import { ArticleModule } from './_modules/article.module';
+import { SettingsModule } from './_modules/settings.module';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { ArticleModule } from './_modules/article.module';
         AuthModule,
         HomeModule,
         TopbarModule,
-        ArticleModule
+        ArticleModule,
+        SettingsModule
     ],
     providers: [
         {

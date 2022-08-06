@@ -2,3 +2,4 @@ export * from './models/auth';
 export * from './models/feed';
 export * from './models/popular-tags';
 export * from './models/article';
+export * from './models/settings';

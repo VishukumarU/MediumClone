@@ -8,12 +8,9 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-    // url: string;
-
-    constructor(
+    constructor (
         private httpClient: HttpClient
     ) {
-        // this.url = 'https://conduit.productionready.io/api';
     }
 
     register (data: MediumClone.IRegisterUser): Observable<MediumClone.ICurrentUser> {

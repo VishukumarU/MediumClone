@@ -3,6 +3,8 @@ import { registerAction } from "src/types/medium-clone/core";
 import { loginAction, loginFailureAction, loginSuccessAction } from "./actions/login.action";
 import { registerFailureAction, registerSuccessAction } from "./actions/register.action";
 import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction } from "./actions/get-current-user.action";
+import { updateCurrentUserSuccessAction } from "../../settings/state/actions/update-current-user.action";
+import { logoutAction } from "../../settings/state/actions/logout-action";
 
 const initialState: MediumClone.IAuthState = {
     isSubmitting: false,
@@ -62,6 +64,16 @@ const authReducer = createReducer(initialState,
         isLoading: false,
         isLoggedIn: false,
         currentUser: null
+    })),
+    on(updateCurrentUserSuccessAction, (state, action): MediumClone.IAuthState => ({
+        ...state,
+        currentUser: action.user,
+        isLoading: false
+    })),
+    on(logoutAction, (state): MediumClone.IAuthState => ({
+        ...state,
+        ...initialState,
+        isLoggedIn: false
     }))
 );
 

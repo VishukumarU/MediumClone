@@ -1,0 +1,40 @@
+<div class="settings-page">
+    <div class="container page">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xs-12">
+                <h1 class="text-xs-center">Your Settings</h1>
+                <app-backend-error-messages *ngIf="(backendErrors$|async )as backendErrors"
+                    [backendErrors]="backendErrors"></app-backend-error-messages>
+                <form [formGroup]="form" (ngSubmit)="onSave()">
+                    <fieldset>
+                        <fieldset class="form-group">
+                            <input type="text" class="form-control form-control-lg" placeholder="URL of profile picture"
+                                formControlName="image">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input type="text" class="form-control form-control-lg" placeholder="username"
+                                formControlName="username">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <textarea rows="8" class="form-control form-control-lg" placeholder="Short bio about you"
+                                formControlName="bio"></textarea>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input type="text" class="form-control form-control-lg" placeholder="Email"
+                                formControlName="email">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input type="password" class="form-control form-control-lg" placeholder="password"
+                                formControlName="password">
+                        </fieldset>
+                        <button [disabled]="!form.valid || (isSubmitting$|async)"
+                            class="btn btn-lg btn-primary pull-xs-right">Update
+                            Settings</button>
+                    </fieldset>
+                </form>
+                <hr>
+                <button (click)="logout()" class="btn btn-outline-danger">Or Click here to logout</button>
+            </div>
+        </div>
+    </div>
+</div>
