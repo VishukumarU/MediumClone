@@ -3,11 +3,11 @@
         <div *ngIf="article$|async as article" class="container">
             <h1>{{article.title}}</h1>
             <div class="article-meta">
-                <a [routerLink]="['/profiles', article.author.username]">
+                <a [routerLink]="['/profile', article.author.username]">
                     <img [src]="article.author.image" />
                 </a>
                 <div class="info">
-                    <a [routerLink]="['/profiles', article.author.username]">
+                    <a [routerLink]="['/profile', article.author.username]">
                         {{article.author.username}}
                     </a>
                     <span class="date">{{article.createdAt}}</span>

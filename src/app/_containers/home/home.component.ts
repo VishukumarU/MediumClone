@@ -14,16 +14,12 @@ export class HomeComponent implements OnInit {
         mode: 'feed'
     };
 
-    constructor (private store: Store,
+    constructor (
         private route: ActivatedRoute) {
-
-        console.log(this.route.snapshot);
-
         this.state.mode = this.route.snapshot.data['mode'];
     }
 
     ngOnInit (): void {
-        // this.store.dispatch(getCurrentUserAction());
     }
 
 }

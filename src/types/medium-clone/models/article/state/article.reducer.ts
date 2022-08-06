@@ -1,8 +1,8 @@
 import { routerNavigationAction } from "@ngrx/router-store";
 import { Action, createReducer, on } from "@ngrx/store"
-import { deleteArticleAction, deleteArticleFailureAction, deleteArticleSuccessAction } from "./actions/delete-article.action";
+import { deleteArticleSuccessAction } from "./actions/delete-article.action";
 import { getArticleAction, getArticleEditAction, getArticleEditSuccessAction, getArticleFailureAction, getArticleSuccessAction } from "./actions/get-article.action";
-import { insertArticleAction, insertArticleFailureAction, insertArticleSuccessAction } from "./actions/insert-article.action";
+import { insertArticleFailureAction, insertArticleSuccessAction } from "./actions/insert-article.action";
 import { updateArticleAction, updateArticleFailureAction, updateArticleSuccessAction } from "./actions/update-article.action";
 
 const initialState: MediumClone.IArticleState = {
@@ -34,10 +34,6 @@ const reducer = createReducer(initialState,
         ...state,
         data: null
     })),
-    // on(insertArticleAction, (state): MediumClone.IArticleState => ({
-    //     ...state,
-    //     isLoading: true
-    // })),
     on(insertArticleSuccessAction, (state, action): MediumClone.IArticleState => ({
         ...state,
         isLoading: false,

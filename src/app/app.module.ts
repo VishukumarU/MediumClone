@@ -15,6 +15,7 @@ import { AuthModule } from './_modules/auth.module';
 import { HomeModule } from './_modules/home.module';
 import { ArticleModule } from './_modules/article.module';
 import { SettingsModule } from './_modules/settings.module';
+import { ProfileModule } from './_modules/profile.module';
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import { SettingsModule } from './_modules/settings.module';
         HomeModule,
         TopbarModule,
         ArticleModule,
-        SettingsModule
+        SettingsModule,
+        ProfileModule
     ],
     providers: [
         {
