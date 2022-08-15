@@ -13,6 +13,11 @@ import { GetPopularTagsEffect } from 'src/types/medium-clone/models/popular-tags
 import { StoreModule } from '@ngrx/store';
 import { popularTagsReducers } from 'src/types/medium-clone/models/popular-tags/state/popular-tags.reducer';
 import { FeedTogglerComponent } from '../components/feed-toggler/feed-toggler.component';
+import { AddToFavouriteComponent } from '../components/add-to-favourite/add-to-favourite.component';
+import { DecreaseCountEffect } from 'src/types/medium-clone/models/favourite/state/effects/decrease-count.effect';
+import { IncreaseCountEffect } from 'src/types/medium-clone/models/favourite/state/effects/increase-count.effect';
+import { FavouriteModule } from 'src/app/_modules/favourite.module';
+import { FollowButtonComponent } from '../components/follow-button/follow-button.component';
 
 
 
@@ -25,7 +30,8 @@ import { FeedTogglerComponent } from '../components/feed-toggler/feed-toggler.co
         PaginationComponent,
         TagComponent,
         PopularTagsComponent,
-        FeedTogglerComponent
+        FeedTogglerComponent,
+        FollowButtonComponent
     ],
     imports: [
         CommonModule,
@@ -41,7 +47,8 @@ import { FeedTogglerComponent } from '../components/feed-toggler/feed-toggler.co
         PaginationComponent,
         TagComponent,
         PopularTagsComponent,
-        FeedTogglerComponent
+        FeedTogglerComponent,
+        FollowButtonComponent
     ]
 })
 export class SharedModule { }

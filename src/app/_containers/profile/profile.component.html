@@ -1,13 +1,1 @@
-<div *ngIf="profile$|async as profile" class="profile-page">
-    <div class="user-info">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-10 offset-md-1">
-                    <img [src]="profile.image" alt="user-img" class="user-img">
-                    <h4>{{profile.username}}</h4>
-                    <p>{{profile.bio}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<app-profile-home></app-profile-home>

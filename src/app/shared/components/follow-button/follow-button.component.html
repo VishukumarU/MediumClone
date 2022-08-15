@@ -1,0 +1,8 @@
+<ng-container *ngIf="profile$|async as profile">
+
+    <button class="btn btn-sm btn-secondary action-btn">
+        <i [ngClass]="{'ion-minus-round': profile.following, 'ion-plus-round':!profile.following}"></i>
+        &nbsp;{{profile.following? 'Unfollow' :'Follow'}} {{profile.username}}
+    </button>
+
+</ng-container>

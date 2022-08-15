@@ -27,7 +27,7 @@ export class UpdateCurrentUserEffect {
     redirectAfterUpdate$ = createEffect(
         () => this.actions$.pipe(
             ofType(MediumClone.updateCurrentUserSuccessAction),
-            tap(() => this.router.navigate(['/profile']))
+            tap(({ user }) => this.router.navigate(['/profile', user.username]))
         ),
         { dispatch: false }
     );

@@ -1,3 +1,4 @@
+import { routerNavigatedAction } from "@ngrx/router-store";
 import { Action, createReducer, on } from "@ngrx/store";
 import { getProfileAction, getProfileFailureAction, getProfileSuccessAction } from './actions/get-profile.action';
 
@@ -21,6 +22,10 @@ export const profileReducer = createReducer(initialState,
     on(getProfileFailureAction, (state): MediumClone.IProfileState => ({
         ...state,
         isLoading: false
+    })),
+    on(routerNavigatedAction, (state): MediumClone.IProfileState => ({
+        ...state,
+        data: null
     }))
 );
 

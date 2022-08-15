@@ -9,6 +9,7 @@ import { GlobalFeedComponent } from '../_containers/global-feed/global-feed.comp
 import { FeedComponent } from '../components/feed/feed.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared/shared.module';
+import { FavouriteModule } from './favourite.module';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { SharedModule } from '../shared/shared/shared.module';
         CommonModule,
         RouterModule,
         SharedModule,
+        FavouriteModule,
         EffectsModule.forFeature([GetFeedEffect]),
         StoreModule.forFeature('feed', feedReducers),
     ],

@@ -5,6 +5,7 @@ export interface IAppState {
     article: MediumClone.IArticleState;
     settings: MediumClone.ISettingsState;
     profile: MediumClone.IProfileState;
+    favourite: MediumClone.IFavouriteState;
 }
 
 export interface IProfile {

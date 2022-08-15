@@ -1,0 +1,20 @@
+<div *ngIf="(profile$ | async) as profile" class="profile-page">
+    <div class="user-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-10 offset-md-1">
+                    <img [src]="profile.image" alt="user-img" class="user-img">
+                    <h4>{{profile.username}}</h4>
+                    <p>{{profile.bio}}</p>
+                    <app-follow-button *ngIf="profile.username !== (currentUser$ | async)?.username">
+                    </app-follow-button>
+                    <a *ngIf="profile.username === (currentUser$ | async)?.username"
+                        class="btn btn-sm btn-outline-secondary action-btn">
+                        <i class="ion-gear-a">&nbsp;Edit Profile Settings</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-profile-feed [profile]="profile"></app-profile-feed>
+</div>
