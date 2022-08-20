@@ -6,10 +6,16 @@ const routes: Routes = [
     {
         path: ':username',
         component: ProfileComponent,
+        data: {
+            mode: 'author'
+        }
     },
     {
-        path: 'favourites/:username',
+        path: ':username/favourites',
         component: ProfileComponent,
+        data: {
+            mode: 'favourite'
+        }
     }
 ];
 

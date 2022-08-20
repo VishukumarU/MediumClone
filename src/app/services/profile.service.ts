@@ -21,4 +21,20 @@ export class ProfileService {
                 map(({ profile }) => profile)
             );
     }
+
+    addFollow (username: string): Observable<App.IProfile> {
+        const fullUrl = `${this.baseUrl}/profiles/${username}/follow`;
+        return this.http.post<MediumClone.IProfileResponse>(fullUrl, {})
+            .pipe(
+                map(({ profile }) => profile)
+            );
+    }
+
+    deleteFollow (username: string): Observable<App.IProfile> {
+        const fullUrl = `${this.baseUrl}/profiles/${username}/follow`;
+        return this.http.delete<MediumClone.IProfileResponse>(fullUrl)
+            .pipe(
+                map(({ profile }) => profile)
+            );
+    }
 }

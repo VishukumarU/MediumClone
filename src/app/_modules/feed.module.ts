@@ -25,7 +25,8 @@ import { FavouriteModule } from './favourite.module';
         StoreModule.forFeature('feed', feedReducers),
     ],
     exports: [
-        GlobalFeedComponent
+        GlobalFeedComponent,
+        FeedComponent
     ]
 })
 export class FeedModule { }

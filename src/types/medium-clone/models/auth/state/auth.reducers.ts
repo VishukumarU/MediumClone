@@ -5,6 +5,8 @@ import { registerFailureAction, registerSuccessAction } from "./actions/register
 import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction } from "./actions/get-current-user.action";
 import { updateCurrentUserSuccessAction } from "../../settings/state/actions/update-current-user.action";
 import { logoutAction } from "../../settings/state/actions/logout-action";
+import { NavigationEnd } from "@angular/router";
+import { routerNavigatedAction } from "@ngrx/router-store";
 
 const initialState: MediumClone.IAuthState = {
     isSubmitting: false,
@@ -74,6 +76,10 @@ const authReducer = createReducer(initialState,
         ...state,
         ...initialState,
         isLoggedIn: false
+    })),
+    on(routerNavigatedAction, (state): MediumClone.IAuthState => ({
+        ...state,
+        validationErrors: null
     }))
 );
 

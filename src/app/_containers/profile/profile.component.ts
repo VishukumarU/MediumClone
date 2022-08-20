@@ -18,26 +18,14 @@ export class ProfileComponent implements OnInit {
         mode: ''
     };
 
-    username: string;
-    isLoading$: Observable<boolean>;
-    error$: Observable<string | null>;
-    profile$: Observable<App.IProfile | null>;
-    currentUser$: Observable<MediumClone.ICurrentUser | null>;
-
     constructor (
         private route: ActivatedRoute,
         private store: Store<App.IAppState>,
     ) {
         this.state.mode = this.route.snapshot.data['mode'];
-        this.username = this.route.snapshot.params['username'];
-        this.isLoading$ = this.store.select(isLoadingSelector);
-        this.error$ = this.store.select(errorSelector);
-        this.profile$ = this.store.select(profileSelector);
-        this.currentUser$ = this.store.select(currentUserSelector);
     }
 
     ngOnInit (): void {
-        this.store.dispatch(getProfileAction({ username: this.username }));
     }
 
 }

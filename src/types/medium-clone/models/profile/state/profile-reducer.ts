@@ -1,6 +1,7 @@
-import { routerNavigatedAction } from "@ngrx/router-store";
-import { Action, createReducer, on } from "@ngrx/store";
+import { createReducer, on } from "@ngrx/store";
+import { addFollowAction, addFollowFailureAction, addFollowSuccessAction } from "./actions/add-follow.action";
 import { getProfileAction, getProfileFailureAction, getProfileSuccessAction } from './actions/get-profile.action';
+import { removeFollowAction, removeFollowFailureAction, removeFollowSuccessAction } from "./actions/remove-follow.action";
 
 const initialState: MediumClone.IProfileState = {
     data: null,
@@ -23,9 +24,31 @@ export const profileReducer = createReducer(initialState,
         ...state,
         isLoading: false
     })),
-    on(routerNavigatedAction, (state): MediumClone.IProfileState => ({
+    on(addFollowAction, (state): MediumClone.IProfileState => ({
         ...state,
-        data: null
+        isLoading: true
+    })),
+    on(addFollowSuccessAction, (state, action): MediumClone.IProfileState => ({
+        ...state,
+        data: action.profile,
+        isLoading: false
+    })),
+    on(addFollowFailureAction, (state): MediumClone.IProfileState => ({
+        ...state,
+        isLoading: false
+    })),
+    on(removeFollowAction, (state): MediumClone.IProfileState => ({
+        ...state,
+        isLoading: true
+    })),
+    on(removeFollowSuccessAction, (state, action): MediumClone.IProfileState => ({
+        ...state,
+        data: action.profile,
+        isLoading: false
+    })),
+    on(removeFollowFailureAction, (state): MediumClone.IProfileState => ({
+        ...state,
+        isLoading: false
     }))
 );
 

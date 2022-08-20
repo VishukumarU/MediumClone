@@ -6,11 +6,14 @@ import { ProfileHomeComponent } from '../components/profile/profile-home/profile
 import { StoreModule } from '@ngrx/store';
 import { profileReducer } from 'src/types/medium-clone/models/profile/state/profile-reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { GetProfileEffect } from 'src/types/medium-clone/models/profile/state/effects/get-profile.effect';
 import { SharedModule } from '../shared/shared/shared.module';
 import { ProfileComponent } from '../_containers/profile/profile.component';
 import { ProfileFeedComponent } from '../components/profile/profile-feed/profile-feed.component';
 import { RouterModule } from '@angular/router';
+import { FeedModule } from './feed.module';
+import { GetProfileEffect } from 'src/types/medium-clone/models/profile/state/effects/get-profile.effect';
+import { AddFollowEffect } from 'src/types/medium-clone/models/profile/state/effects/add-follow.effect';
+import { RemoveFollowEffect } from 'src/types/medium-clone/models/profile/state/effects/remove-follow.effect';
 
 @NgModule({
     declarations: [
@@ -23,8 +26,9 @@ import { RouterModule } from '@angular/router';
         ProfileRoutingModule,
         SharedModule,
         RouterModule,
+        FeedModule,
         StoreModule.forFeature('profile', profileReducer),
-        EffectsModule.forFeature([GetProfileEffect])
+        EffectsModule.forFeature([GetProfileEffect, AddFollowEffect, RemoveFollowEffect])
     ]
 })
 export class ProfileModule { }

@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProfileFeedComponent implements OnInit {
 
     @Input() profile: App.IProfile;
+    @Input() apiUrl: string;
 
     constructor () { }
 
