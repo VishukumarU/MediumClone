@@ -36,6 +36,7 @@ import { FollowButtonComponent } from '../components/follow-button/follow-button
     imports: [
         CommonModule,
         RouterModule,
+        FavouriteModule,
         EffectsModule.forFeature([GetPopularTagsEffect]),
         StoreModule.forFeature('popularTags', popularTagsReducers)
     ],
@@ -48,7 +49,8 @@ import { FollowButtonComponent } from '../components/follow-button/follow-button
         TagComponent,
         PopularTagsComponent,
         FeedTogglerComponent,
-        FollowButtonComponent
+        FollowButtonComponent,
+        FavouriteModule
     ]
 })
 export class SharedModule { }

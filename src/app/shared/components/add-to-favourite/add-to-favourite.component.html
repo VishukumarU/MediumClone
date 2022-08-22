@@ -1,4 +1,10 @@
 <button [disabled]="isLoading$|async" (click)="updateCount()" class="btn btn-sm"
     [ngClass]="{'btn-primary': isFavourited, 'btn-outline-primary':!isFavourited}">
-    <i class="ion-heart">&nbsp;{{favouritesCount}}</i>
+    <ng-container *ngIf="favouriteText; else noTextTemplate">
+        <i class="ion-heart">&nbsp;{{isFavourited? 'Favourite Article': 'Unfavourite Article'}} ({{favouritesCount}})
+        </i>
+    </ng-container>
+    <ng-template #noTextTemplate>
+        <i class="ion-heart">&nbsp;{{favouritesCount}}</i>
+    </ng-template>
 </button>

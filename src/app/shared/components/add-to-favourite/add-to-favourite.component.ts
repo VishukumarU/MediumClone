@@ -16,6 +16,7 @@ export class AddToFavouriteComponent implements OnInit {
     @Input() isFavourited: boolean;
     @Input() slug: string;
     @Input() favouritesCount: number;
+    @Input() favouriteText: boolean;
 
     constructor (
         private store: Store<App.IAppState>

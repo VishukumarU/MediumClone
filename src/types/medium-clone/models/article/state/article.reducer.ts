@@ -4,6 +4,10 @@ import { deleteArticleSuccessAction } from "./actions/delete-article.action";
 import { getArticleAction, getArticleEditAction, getArticleEditSuccessAction, getArticleFailureAction, getArticleSuccessAction } from "./actions/get-article.action";
 import { insertArticleFailureAction, insertArticleSuccessAction } from "./actions/insert-article.action";
 import { updateArticleAction, updateArticleFailureAction, updateArticleSuccessAction } from "./actions/update-article.action";
+import { increaseCountSuccessAction } from "../../favourite/state/actions/increase-count.action";
+import { TypedAction } from "@ngrx/store/src/models";
+import { decreaseCountSuccessAction } from "../../favourite/state/actions/decrease-count.action";
+
 
 const initialState: MediumClone.IArticleState = {
     data: null,
@@ -69,6 +73,14 @@ const reducer = createReducer(initialState,
         isLoading: false,
         data: null,
         validationErrors: action.errors
+    })),
+    on(increaseCountSuccessAction, (state, action): MediumClone.IArticleState => ({
+        ...state,
+        data: action.article
+    })),
+    on(decreaseCountSuccessAction, (state, action): MediumClone.IArticleState => ({
+        ...state,
+        data: action.article
     }))
 );
 

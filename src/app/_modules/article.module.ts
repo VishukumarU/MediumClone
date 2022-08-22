@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InsertArticleEffect } from 'src/types/medium-clone/models/article/state/effects/insert-article.effect';
 import { ArticleCreateEditComponent } from '../components/article/article-create-edit/article-create-edit.component';
 import { UpdateArticleEffect } from 'src/types/medium-clone/models/article/state/effects/update-article.effect';
+import { ArticleMetaComponent } from '../components/article/article-meta/article-meta.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { UpdateArticleEffect } from 'src/types/medium-clone/models/article/state
         ArticleComponent,
         ArticleDisplayComponent,
         ArticleCreateEditComponent,
-        ArticleFormComponent
+        ArticleFormComponent,
+        ArticleMetaComponent
     ],
     imports: [
         CommonModule,

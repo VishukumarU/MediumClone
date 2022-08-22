@@ -43,10 +43,6 @@ export class ArticleDisplayComponent implements OnInit, OnDestroy {
     ngOnInit (): void {
     }
 
-    onDeleteArticle (slug: string) {
-        this.store.dispatch(deleteArticleAction({ slug }));
-    }
-
     ngOnDestroy (): void {
         this.subs.unsubscribe();
     }

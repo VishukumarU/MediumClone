@@ -58,11 +58,13 @@ const getArticles = (state: MediumClone.IFeedState, action: {
     type: ActionTypes.DECREASE_COUNT_SUCCESS | ActionTypes.INCREASE_COUNT_SUCCESS;
 }) => {
 
-    const index = state.data?.articles.findIndex(article => article.slug === action.article.slug)
+    const index = state.data?.articles?.findIndex(article => article.slug === action.article.slug);
     let articles: MediumClone.IArticle[] | null = null;
-    if (state.data !== null) {
-        articles = state.data.articles.slice();
-        articles[index!] = action.article;
+    if (index !== -1 && index !== undefined) {
+        if (state.data !== null) {
+            articles = state.data.articles.slice();
+            articles[index!] = action.article;
+        }
     }
     return articles;
 
