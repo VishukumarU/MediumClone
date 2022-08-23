@@ -25,10 +25,23 @@
             <div class="row">
                 <div class="col-xs-12 col-md-8 offset-md-2">
                     <div>
+                        <app-loader *ngIf="(isCommentLoading$ | async)"></app-loader>
                         <!-- <app-backend-error-messages></app-backend-error-messages> -->
-                        <form class="card comment-form"></form>
+                        <form [formGroup]="form" (ngSubmit)="onAddComment(article.slug)" class="card comment-form">
+                            <fieldset>
+                                <div class="card-block">
+                                    <textarea class="form-control" formControlName="comment" rows="3"></textarea>
+                                </div>
+                                <div class="card-footer">
+                                    <img src="{{(currentUser$|async)?.image}}">
+                                    <button class="btn btn-sm btn-primary" type="submit">Post</button>
+                                </div>
+                            </fieldset>
+                        </form>
                         <ng-container *ngFor="let comment of comments$|async">
-                            <app-comment [comment]="comment"></app-comment>
+                            <app-comment [isAuthor]="(currentUser$|async)?.username === comment.author.username"
+                                [comment]="comment" (removeComment)="onRemoveComment($event, article.slug)">
+                            </app-comment>
                         </ng-container>
 
                     </div>

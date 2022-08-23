@@ -10,7 +10,7 @@
         <a [routerLink]="['/profile', comment.author.username]" class="comment-author">{{comment.author.username}}</a>
         <span class="date-posted">{{comment.createdAt | date: 'longDate'}}</span>
         <span *ngIf="isAuthor" class="mod-options">
-            <i class="ion-trash-a"></i>
+            <i (click)="onRemoveComment()" class="ion-trash-a"></i>
         </span>
     </div>
 </div>

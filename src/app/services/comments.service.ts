@@ -22,16 +22,18 @@ export class CommentsService {
             );
     }
 
-    add (username: string, comment: MediumClone.IComment): Observable<MediumClone.IComment> {
-        const url = `${this.baseUrl}/${username}/comments`;
+    add (slug: string, comment: MediumClone.IComment): Observable<MediumClone.IComment> {
+        const url = `${this.baseUrl}/${slug}/comments`;
         return this.http.post<MediumClone.ICommentResponse>(url, { comment })
             .pipe(
                 map(({ comment }): MediumClone.IComment => comment)
             );
     }
 
-    remove (username: string, id: number): Observable<{}> {
-        const url = `${this.baseUrl}/${username}/comments/${id}`;
-        return this.http.delete(url);
+    remove (slug: string, id: number): Observable<number> {
+        const url = `${this.baseUrl}/${slug}/comments/${id}`;
+        return this.http.delete(url).pipe(
+            map(() => id)
+        );
     }
 }

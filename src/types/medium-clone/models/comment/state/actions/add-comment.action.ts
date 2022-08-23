@@ -3,7 +3,7 @@ import { ActionTypes } from "./action-types";
 
 export const addCommentAction = createAction(
     ActionTypes.ADD_COMMENT,
-    props<{ username: string, comment: MediumClone.IComment }>()
+    props<{ slug: string, comment: MediumClone.IComment }>()
 );
 
 export const addCommentSuccessAction = createAction(

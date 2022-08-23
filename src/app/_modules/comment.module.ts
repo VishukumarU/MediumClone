@@ -7,6 +7,7 @@ import { AddCommentEffect } from 'src/types/medium-clone/models/comment/state/ef
 import { commentReducer } from 'src/types/medium-clone/models/comment/state/comment.reducer';
 import { GetCommentEffect } from 'src/types/medium-clone/models/comment/state/effects/get-comment.effect';
 import { RouterModule } from '@angular/router';
+import { RemoveCommentEffect } from 'src/types/medium-clone/models/comment/state/effects/remove-comment.effect';
 
 
 
@@ -18,7 +19,7 @@ import { RouterModule } from '@angular/router';
         CommonModule,
         RouterModule,
         StoreModule.forFeature('comment', commentReducer),
-        EffectsModule.forFeature([AddCommentEffect, GetCommentEffect])
+        EffectsModule.forFeature([AddCommentEffect, GetCommentEffect, RemoveCommentEffect])
     ],
     exports: [
         CommentComponent

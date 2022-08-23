@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { map, Observable } from 'rxjs';
+import { currentUserSelector } from 'src/types/medium-clone/models/auth/state/selectors';
 
 @Component({
     selector: 'app-comment',
@@ -8,14 +10,17 @@ import { Store } from '@ngrx/store';
 })
 export class CommentComponent implements OnInit {
 
+    @Input() isAuthor: boolean;
     @Input() comment: MediumClone.IComment;
-    isAuthor: boolean | null;
+    @Output() removeComment: EventEmitter<number> = new EventEmitter();
 
-    constructor (
-        private store: Store<App.IAppState>
-    ) { }
+    constructor () { }
 
     ngOnInit (): void {
+    }
+
+    onRemoveComment (): void {
+        this.removeComment.emit(this.comment.id);
     }
 
 }
