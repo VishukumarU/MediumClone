@@ -17,6 +17,7 @@ import { ArticleModule } from './_modules/article.module';
 import { SettingsModule } from './_modules/settings.module';
 import { ProfileModule } from './_modules/profile.module';
 import { FavouriteModule } from './_modules/favourite.module';
+import { CommentModule } from './_modules/comment.module';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,7 @@ import { FavouriteModule } from './_modules/favourite.module';
         ArticleModule,
         SettingsModule,
         ProfileModule,
-        FavouriteModule
+        FavouriteModule,
     ],
     providers: [
         {

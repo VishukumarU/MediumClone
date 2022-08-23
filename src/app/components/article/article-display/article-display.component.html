@@ -22,6 +22,18 @@
             <div class="article-actions">
                 <app-article-meta [article]="article" [isAuthor]="isAuthor$|async"></app-article-meta>
             </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-8 offset-md-2">
+                    <div>
+                        <!-- <app-backend-error-messages></app-backend-error-messages> -->
+                        <form class="card comment-form"></form>
+                        <ng-container *ngFor="let comment of comments$|async">
+                            <app-comment [comment]="comment"></app-comment>
+                        </ng-container>
+
+                    </div>
+                </div>
+            </div>
         </ng-container>
     </div>
 </div>

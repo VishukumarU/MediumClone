@@ -5,7 +5,6 @@ import { getArticleAction, getArticleEditAction, getArticleEditSuccessAction, ge
 import { insertArticleFailureAction, insertArticleSuccessAction } from "./actions/insert-article.action";
 import { updateArticleAction, updateArticleFailureAction, updateArticleSuccessAction } from "./actions/update-article.action";
 import { increaseCountSuccessAction } from "../../favourite/state/actions/increase-count.action";
-import { TypedAction } from "@ngrx/store/src/models";
 import { decreaseCountSuccessAction } from "../../favourite/state/actions/decrease-count.action";
 
 

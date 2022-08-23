@@ -18,6 +18,7 @@ import { DecreaseCountEffect } from 'src/types/medium-clone/models/favourite/sta
 import { IncreaseCountEffect } from 'src/types/medium-clone/models/favourite/state/effects/increase-count.effect';
 import { FavouriteModule } from 'src/app/_modules/favourite.module';
 import { FollowButtonComponent } from '../components/follow-button/follow-button.component';
+import { CommentModule } from 'src/app/_modules/comment.module';
 
 
 
@@ -37,6 +38,7 @@ import { FollowButtonComponent } from '../components/follow-button/follow-button
         CommonModule,
         RouterModule,
         FavouriteModule,
+        CommentModule,
         EffectsModule.forFeature([GetPopularTagsEffect]),
         StoreModule.forFeature('popularTags', popularTagsReducers)
     ],
@@ -50,7 +52,8 @@ import { FollowButtonComponent } from '../components/follow-button/follow-button
         PopularTagsComponent,
         FeedTogglerComponent,
         FollowButtonComponent,
-        FavouriteModule
+        FavouriteModule,
+        CommentModule
     ]
 })
 export class SharedModule { }
